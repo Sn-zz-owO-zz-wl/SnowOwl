@@ -11,7 +11,7 @@ function highlight(table) {
 
     for (let i = 0; i < rows.length; i++) {
       
-  let [statusCell, genderCell, ageCell] = [rows[i].cells[3], rows[i].cells[2], rows[i].cells[1]];
+      let [, ageCell, genderCell, statusCell] = rows[i].cells;
 
         if (statusCell.dataset.available === 'true') {
         rows[i].className = 'available';
