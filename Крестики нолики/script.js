@@ -52,32 +52,29 @@ function isFull(currentValue) {
 
 
 function checkWinner() {
-if (line1.every(isCross) || 
-    line2.every(isCross) || 
-    line3.every(isCross) || 
-    col1.every(isCross) || 
-    col2.every(isCross) || 
-    col3.every(isCross) || 
-    diagonal1.every(isCross) || 
-    diagonal2.every(isCross))
-    {
+    if (line1.every(isCross) ||
+        line2.every(isCross) ||
+        line3.every(isCross) ||
+        col1.every(isCross) ||
+        col2.every(isCross) ||
+        col3.every(isCross) ||
+        diagonal1.every(isCross) ||
+        diagonal2.every(isCross)) {
         alert('Крестики выиграли');
         reset();
 
-    }  else if (line1.every(isNought) || 
-                line2.every(isNought) || 
-                line3.every(isNought) || 
-                col1.every(isNought) || 
-                col2.every(isNought) || 
-                col3.every(isNought) || 
-                diagonal1.every(isNought) || 
-                diagonal2.every(isNought))
-    {
-    alert('Крестики выиграли');
-    reset();
+    } else if (line1.every(isNought) ||
+        line2.every(isNought) ||
+        line3.every(isNought) ||
+        col1.every(isNought) ||
+        col2.every(isNought) ||
+        col3.every(isNought) ||
+        diagonal1.every(isNought) ||
+        diagonal2.every(isNought)) {
+        alert('Крестики выиграли');
+        reset();
 
-    } else if([c1, c2, c3, c4, c5, c6, c7, c8, c9].every(isFull))
-    {
+    } else if ([c1, c2, c3, c4, c5, c6, c7, c8, c9].every(isFull)) {
         alert('Ничья');
         reset();
     }
@@ -93,7 +90,3 @@ function reset() {
     }
     alert('Крестики ходят первыми');
 }
-
-
-
-
