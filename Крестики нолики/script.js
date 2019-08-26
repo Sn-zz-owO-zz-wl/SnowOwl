@@ -1,5 +1,6 @@
 
 
+
 'use strict';
 alert('Крестики ходят первыми');
 let table = document.querySelector('table');
@@ -7,8 +8,14 @@ let cells = document.querySelectorAll('td');
 let selectedTd;
 let moveChecker = 0;
 let [c1, c2, c3, c4, c5, c6, c7, c8, c9] = cells;
-
-
+let line1 = [c1, c2, c3];
+let line2 = [c4, c5, c6];
+let line3 = [c7, c8, c9];
+let col1 = [c1, c4, c7];
+let col2 = [c2, c5, c8];
+let col3 = [c3, c6, c9];
+let diagonal1 = [c1, c5, c9];
+let diagonal2 = [c3, c5, c7];
 
 table.addEventListener('click', function(event) {
     let target = event.target;
@@ -34,80 +41,37 @@ function highlight(node) {
 
 
 
+function isCross(currentValue) {
+    return currentValue.className === "cross";
+}
+
+function isNought(currentValue) {
+    return currentValue.className === "nought";
+}
+
+function isFull(currentValue) {
+    return currentValue.className !== "";
+}
+
+
 function checkWinner() {
-
-
-    if (c1.className === "cross" &&
-        c2.className === "cross" &&
-        c3.className === "cross" ||
-        c4.className === "cross" &&
-        c5.className === "cross" &&
-        c6.className === "cross" ||
-        c7.className === "cross" &&
-        c8.className === "cross" &&
-        c9.className === "cross" ||
-        c1.className === "cross" &&
-        c4.className === "cross" &&
-        c7.className === "cross" ||
-        c2.className === "cross" &&
-        c5.className === "cross" &&
-        c8.className === "cross" ||
-        c3.className === "cross" &&
-        c6.className === "cross" &&
-        c9.className === "cross" ||
-        c1.className === "cross" &&
-        c5.className === "cross" &&
-        c9.className === "cross" ||
-        c7.className === "cross" &&
-        c5.className === "cross" &&
-        c3.className === "cross"){
-
+if (line1.every(isCross) || line2.every(isCross) || line3.every(isCross) || col1.every(isCross) || col2.every(isCross) || col3.every(isCross) || diagonal1.every(isCross) || diagonal2.every(isCross))
+    {
         alert('Крестики выиграли');
-        return reset();
+        reset();
 
-    } else if
-       (c1.className === "nought" &&
-        c2.className === "nought" &&
-        c3.className === "nought" ||
-        c4.className === "nought" &&
-        c5.className === "nought" &&
-        c6.className === "nought" ||
-        c7.className === "nought" &&
-        c8.className === "nought" &&
-        c9.className === "nought" ||
-        c1.className === "nought" &&
-        c4.className === "nought" &&
-        c7.className === "nought" ||
-        c2.className === "nought" &&
-        c5.className === "nought" &&
-        c8.className === "nought" ||
-        c3.className === "nought" &&
-        c6.className === "nought" &&
-        c9.className === "nought" ||
-        c1.className === "nought" &&
-        c3.className === "nought" &&
-        c5.className === "nought" ||
-        c7.className === "nought" &&
-        c5.className === "nought" &&
-        c3.className === "nought"){
+    }  else if (line1.every(isNought) || line2.every(isNought) || line3.every(isNought) || col1.every(isNought) || col2.every(isNought) || col3.every(isNought) || diagonal1.every(isNought) || diagonal2.every(isNought))
+    {
+    alert('Крестики выиграли');
+    reset();
 
-        alert('Нолики выиграли');
-        return reset();
-
-    } else if
-       (c1.className !== "" &&
-        c2.className !== "" &&
-        c3.className !== "" &&
-        c4.className !== "" &&
-        c5.className !== "" &&
-        c6.className !== "" &&
-        c7.className !== "" &&
-        c8.className !== "" &&
-        c9.className !== "" )
+    } else if([c1, c2, c3, c4, c5, c6, c7, c8, c9].every(isFull))
     {
         alert('Ничья');
-        return reset();
+        reset();
+
     }
+
 }
 
 
