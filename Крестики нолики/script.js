@@ -80,11 +80,8 @@ if (line1.every(isCross) ||
     {
         alert('Ничья');
         reset();
-
     }
-
 }
-
 
 
 function reset() {
