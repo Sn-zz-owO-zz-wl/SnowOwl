@@ -2,7 +2,6 @@
 alert('Крестики ходят первыми');
 let table = document.querySelector('table');
 let cells = document.querySelectorAll('td');
-let selectedTd;
 let moveChecker = 0;
 let [c1, c2, c3, c4, c5, c6, c7, c8, c9] = cells;
 let line1 = [c1, c2, c3];
@@ -16,9 +15,8 @@ let diagonal2 = [c3, c5, c7];
 
 table.addEventListener('click', function(event) {
     let target = event.target;
-
-    if (target.tagName !== 'TD') return;
-    if (target.classList.contains('cross') || target.classList.contains('nought')) return;
+    if (target.matches === 'TD') return;
+    if (target.classList.contains('cross')) return;
     highlight(target);
     checkWinner();
 
@@ -26,7 +24,7 @@ table.addEventListener('click', function(event) {
 
 
 function highlight(node) {
-    selectedTd = node;
+    const selectedTd = node;
 
     if (moveChecker % 2 === 0) {
         selectedTd.classList.add('cross');
@@ -71,7 +69,7 @@ function checkWinner() {
         col3.every(isNought) ||
         diagonal1.every(isNought) ||
         diagonal2.every(isNought)) {
-        alert('Крестики выиграли');
+        alert('Нолики выиграли');
         reset();
 
     } else if ([c1, c2, c3, c4, c5, c6, c7, c8, c9].every(isFull)) {
