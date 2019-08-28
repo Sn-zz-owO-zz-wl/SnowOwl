@@ -37,11 +37,11 @@ function highlight(node) {
 
 
 function isCross(currentValue) {
-    return currentValue.className === "cross";
+    return currentValue.classList.contain("cross");
 }
 
 function isNought(currentValue) {
-    return currentValue.className === "nought";
+    return currentValue.classList.contain("nought");
 }
 
 function isFull(currentValue) {
